@@ -13,14 +13,13 @@ shinyUI(fluidPage(
   h1(""),
   
   h4("Quick Start Documentation"),
-  h5("This application estimates Pi by using using a sample of uniformely distributed random points"),
+  h5("This application estimates Pi by using a sample of uniformly distributed random points"),
   h5("in a square. The estimated value is the ratio of the number of points in the inscribed disk (x 4)"),
   h5("over the total number of points. The relative error is reported."),
   
   h1(""),
   h5("Just type in the number of random points to use (max < 100001) and click the <Submit> button. Retry with other values."),
   h1(""),
-  
   
   h1(""),
   h5("See: "),
