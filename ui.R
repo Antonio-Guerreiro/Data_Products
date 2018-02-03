@@ -25,6 +25,7 @@ shinyUI(fluidPage(
   h1(""),
   h5("See: "),
   h5(a("Wikipedia Monte Carlo method article", href="https://en.wikipedia.org/wiki/Monte_Carlo_method")),
+  h5(a("Application reproductible pitch presentation at RPubs", href="http://rpubs.com/Antonio-Guerreiro/Pi")),
   h1(""),
   
   h4("Shiny Application"),
