@@ -1,0 +1,52 @@
+Computing an estimation of Pi using a Monte Carlo method
+========================================================
+author: Antonio Guerreiro
+date: January 29, 2018
+autosize: true
+
+Introduction
+========================================================
+
+  - This application estimates Pi by using a sample of uniformly distributed random points in a square. 
+  - The estimated value is the ratio of the number of points in the inscribed disk (x 4) over the total number of points. 
+  - The relative error is reported.
+  
+Additional documentation
+========================================================
+  
+  - See the Monte Carlo method article 
+  of the [Wikipedia](https://en.wikipedia.org/wiki/Monte_Carlo_method) for more detailed information.
+  
+  - The source code is available on [GitHub](https://github.com/Antonio-Guerreiro/Data_Products).
+ 
+ How to 
+========================================================
+
+ - Just type in the number of random points to use (max < 100001).
+ - Click the "Submit" button.
+ - Retry with other values.
+ - Two plots are generated:
+  + The current random points distribution,
+  + An updated plot of the relative error vs. the number of points used.
+  
+ - Note: in the current version of this Shiny application, for a new computation 
+  to be performed, some input value must be changed in the UI (number of points  or "Show/Hide Title" check box). The application uses delayed reactivity through the "Submit" button.
+
+Computation example using R chunks
+========================================================
+```{r, echo=FALSE}
+number_of_points = 5000
+mydf <- data.frame(
+      dataX = runif(number_of_points, 0, 1), 
+      dataY = runif(number_of_points, 0, 1))
+mydf$in_circle = ifelse(mydf$dataX^2+mydf$dataY^2 <= 1, TRUE, FALSE)
+point_col = ifelse(mydf$in_circle, "green", "red")
+plot(mydf$dataX, mydf$dataY, main = "Distribution of the 5000 random points", xlab = "X", ylab = "Y", xlim = c(0, 1), ylim = c(0, 1), col = point_col, asp = 1)
+myPi <- nrow(mydf[mydf$in_circle == TRUE,]) * 4 / number_of_points
+error <- 100*abs(myPi-pi)/pi
+```
+ - Estimated value and relative error (%):
+```{r, echo=FALSE}
+myPi; error
+```
+
